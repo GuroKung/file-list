@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Test File List</title>
+</head>
+<body>
+  <h1>Test Upload file</h1>
+  <div class="">
+    <!-- Folder Upload -->
+    <!-- <input type="file" id="file_input" webkitdirectory="" directory=""> -->
+
+    <!-- Multiple Files Upload -->
+    <input type="file" name="client-file" id="file_input" multiple />
+  </div>
+  <div class="">
+      <h3>List Files:</h3>
+      <button type="button" name="button" onclick="listFiles()">List files</button>
+      <div id="file-list"></div>
+  </div>
+  <script>
+
+  function generateListFiles(array) {
+    // Create the list element:
+    var list = document.createElement('ul');
+
+    for(var i = 0; i < array.length; i++) {
+        console.log(array[i]);
+
+        // Create the list item:
+        var item = document.createElement('li');
+
+        // Set its contents:
+        item.appendChild(document.createTextNode(array[i].name));
+
+        // Add it to the list:
+        list.appendChild(item);
+    }
+
+    // Finally, return the constructed list:
+    return list;
+  }
+
+  function listFiles() {
+    console.log("List files:");
+    // var inp = document.getElementById("get-files");
+    var inp = document.getElementById("file_input");
+
+    console.log(inp);
+
+    // Access and handle the files
+    // document.getElementById('file-list').appendChild(generateListFiles(inp.files));
+    document.getElementById('file-list').appendChild(generateListFiles(inp.files));
+  }
+
+  </script>
+</body>
+</html>
